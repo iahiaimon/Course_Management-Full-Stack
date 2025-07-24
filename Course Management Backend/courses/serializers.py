@@ -15,5 +15,9 @@ class CategorySerializer(ModelSerializer):
 class CourseSerializer(ModelSerializer):
     class Meta:
         model = Course
-        fields = ["id" , "title" , "description" , "banner" , "price" , "is_active","created_at" , "updated_at"]
-        read_only_fields = ["id", "created_at", "updated_at"] 
+        fields = [
+            "id", "title", "description", "banner",
+            "price", "duration", "category",
+            "is_active", "created_at", "updated_at"
+        ]
+        read_only_fields = ["id", "created_at", "updated_at"]
