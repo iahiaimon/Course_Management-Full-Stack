@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models.category import Category
 from .models.course import Course
-from .serializers import CategorySerializer, CourseSerializer
+from .models.lesson import Lesson , LessonMaterial
+from .serializers import CategorySerializer, CourseSerializer , LessonSerializer , LessonMaterialSerializer
 
 
 from rest_framework.response import Response
@@ -66,3 +67,38 @@ class CourseView(APIView):
                 status=status.HTTP_201_CREATED,
             )
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class LessonView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        lessons = Lesson.objects.all()
+        serializer = LessonSerializer(lessons, many=True)
+        return Response(
+            {
+                "message": "All Lessons with Materials",
+                "lessons": serializer.data
+            },
+            status=status.HTTP_200_OK
+        )
+
+    def post(self, request):
+
+        materials = request.FILES.getlist('lesson_materials')
+
+        lesson_serializer = LessonSerializer(data=request.data)
+        if lesson_serializer.is_valid():
+            lesson = lesson_serializer.save()
+
+            for material in materials:
+                LessonMaterial.objects.create(lesson=lesson, lesson_material=material)
+
+            return Response(
+                {
+                    "message": "Lesson created successfully with materials",
+                    "lesson": LessonSerializer(lesson).data
+                },
+                status=status.HTTP_201_CREATED
+            )
+        return Response(lesson_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
