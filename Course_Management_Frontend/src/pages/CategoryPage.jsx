@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useAuth } from "../hooks/useAuth";
 
-function RegisterPage() {
+function CategoryPage() {
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -305,4 +305,4 @@ function RegisterPage() {
   );
 }
 
-export default RegisterPage;
+export default CategoryPage;

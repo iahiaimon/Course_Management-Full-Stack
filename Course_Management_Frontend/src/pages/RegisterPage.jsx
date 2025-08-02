@@ -54,7 +54,7 @@ function RegisterPage() {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto">
+    <div className="w-full max-w-2xl mx-auto text-black">
       <div className="bg-white p-8 rounded-xl shadow-lg">
         <h2 className="text-2xl font-bold mb-6 text-center text-blue-600">
           Register New User

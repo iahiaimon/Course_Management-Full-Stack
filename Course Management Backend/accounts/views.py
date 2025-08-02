@@ -30,18 +30,22 @@ from .serializers import CustomTokenObtainPairSerializer
 #         return Response(serializer.data)
 
 
+
 class AllUserView(generics.ListCreateAPIView):
-    queryset = CustomUser.objects.all()
-    serializer = CustomUserSerializer
-    # permission_classes = [IsAdminUser]
+    serializer_class = CustomUserSerializer
+    permission_classes = [IsAuthenticated]  # Set this to IsAdminUser if only admins allowed
 
     def get_queryset(self):
-        if self.request.user.role == "admin":
+        user = self.request.user
+        if user.role == "admin":
             return CustomUser.objects.all()
-        return CustomUser.objects.filter(id=self.request.user.id)
+        return CustomUser.objects.filter(id=user.id)  # Show only their own profile
 
     def perform_create(self, serializer):
-        serializer.save()
+        if self.request.user.role == "admin":
+            serializer.save()
+        # else:
+        #     raise PermissionDenied("Only admins can create new users.")
 
 
 class UserRegistrationView(APIView):

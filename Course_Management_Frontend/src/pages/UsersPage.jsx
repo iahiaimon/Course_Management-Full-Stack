@@ -18,7 +18,7 @@ function UsersPage() {
       try {
         // Get the current user's profile to check their role
         const profileResponse = await axios.get(
-          "http://localhost:8000/api/user/profile/",
+          "http://localhost:8000/api/account/",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -30,7 +30,7 @@ function UsersPage() {
           setIsCurrentUserAdmin(true);
           // If the user is an admin, get the list of all users
           const usersResponse = await axios.get(
-            "http://localhost:8000/api/user/auth/",
+            "http://localhost:8000/api/users/",
             {
               headers: { Authorization: `Bearer ${token}` },
             }
@@ -73,7 +73,7 @@ function UsersPage() {
       <h2 className="text-2xl font-bold mb-6 text-green-600">
         List of All Users
       </h2>
-      <div className="overflow-x-auto rounded-lg">
+      <div className="overflow-x-auto rounded-lg text-black">
         <table className="min-w-full border border-gray-200 rounded-lg overflow-hidden">
           <thead className="bg-blue-50">
             <tr>
