@@ -11,7 +11,11 @@ from rest_framework.permissions import IsAuthenticated, AllowAny, IsAdminUser
 from rest_framework.authtoken.models import Token
 from rest_framework import generics
 
-from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+    TokenVerifyView,
+)
 from .serializers import CustomTokenObtainPairSerializer
 
 # Create your views here.
@@ -60,40 +64,43 @@ class UserRegistrationView(APIView):
             )
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+# class UserLoginView(APIView):
+#     permission_classes = [AllowAny]
 
-class UserLoginView(APIView):
-    permission_classes = [AllowAny]
-
-    def post(self, request):
-        username = request.data.get("username")
-        password = request.data.get("password")
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            token, created = Token.objects.get_or_create(user=user)
-            return Response(
-                {
-                    "message": "User logged in successfully",
-                    "token": token.key,
-                    "user": {
-                        "username": user.username,
-                        "email": user.email,
-                        "role": user.role,
-                    },
-                },
-                status=status.HTTP_200_OK,
-            )
-        return Response(
-            {"message": "Invalid Username or Password"},
-            status=status.HTTP_401_UNAUTHORIZED,
-        )
+#     def post(self, request):
+#         username = request.data.get("username")
+#         password = request.data.get("password")
+#         user = authenticate(request, username=username, password=password)
+#         if user is not None:
+#             token, created = Token.objects.get_or_create(user=user)
+#             return Response(
+#                 {
+#                     "message": "User logged in successfully",
+#                     "token": token.key,
+#                     "user": {
+#                         "username": user.username,
+#                         "email": user.email,
+#                         "role": user.role,
+#                     },
+#                 },
+#                 status=status.HTTP_200_OK,
+#             )
+#         return Response(
+#             {"message": "Invalid Username or Password"},
+#             status=status.HTTP_401_UNAUTHORIZED,
+#         )
 
 
 class UserAccountView(APIView):
-    # permission_classes = [IsAuthenticated]
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
     def get_object(self, request):
         return request.user
+
+    def get(self, request):
+        user = self.get_object(request)
+        serializer = CustomUserSerializer(user)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     def put(self, request):
         user = self.get_object(request)
@@ -114,6 +121,7 @@ class UserAccountView(APIView):
             {"message": "Account deleted successfully"},
             status=status.HTTP_204_NO_CONTENT,
         )
+
 
 
 class CustomTokenObtainPairView(TokenObtainPairView):

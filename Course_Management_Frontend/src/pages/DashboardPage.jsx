@@ -5,6 +5,8 @@ import UsersPage from "./UsersPage";
 import RegisterPage from "./RegisterPage";
 import Sidebar from "../components/Sidebar";
 import Topbar from "../components/Topbar";
+import CategoryPage from "./CategoryPage";
+import CoursePage from "./CoursePage";
 import axios from "axios";
 
 function DashboardPage() {
@@ -130,6 +132,10 @@ function DashboardPage() {
         return <UsersPage />;
       case "register":
         return <RegisterPage />;
+      case "category":
+        return <CategoryPage />;
+      case "course":
+        return <CoursePage />;
       case "dashboard":
       default:
         return (

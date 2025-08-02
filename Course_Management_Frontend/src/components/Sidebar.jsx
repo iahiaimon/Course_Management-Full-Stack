@@ -8,15 +8,16 @@ function Sidebar({ sidebarOpen, setSidebarOpen, navItems }) {
   return (
     // The <aside> element represents the sidebar container
     <aside
-      className={`h-screen flex flex-col py-6 px-2 transition-all duration-300 bg-white ${sidebarOpen ? "w-56" : "w-16"
-        } border-r border-gray-100 shadow-sm`}
-    // The sidebar width changes based on sidebarOpen (w-56 = expanded, w-16 = collapsed)
+      className={`h-screen flex flex-col py-6 px-2 transition-all duration-300 bg-white ${
+        sidebarOpen ? "w-56" : "w-20"
+      } border-r border-gray-100 shadow-sm`}
+      // The sidebar width changes based on sidebarOpen (w-56 = expanded, w-16 = collapsed)
     >
       {/* Logo/title and collapse button section */}
       <div className="flex items-center justify-between mb-6 px-2">
         {/* App title or logo, changes based on sidebarOpen */}
         <span className="text-blue-600 font-extrabold text-xl tracking-tight">
-          {sidebarOpen ? "LMS App" : "L"}
+          {sidebarOpen ? "LMS App" : "I"}
         </span>
         {/* Button to toggle sidebar open/collapse */}
         <button
@@ -33,7 +34,11 @@ function Sidebar({ sidebarOpen, setSidebarOpen, navItems }) {
             viewBox="0 0 24 24"
           >
             {/* Three horizontal lines for the menu icon */}
-            <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
           </svg>
         </button>
       </div>
@@ -45,7 +50,11 @@ function Sidebar({ sidebarOpen, setSidebarOpen, navItems }) {
           <button
             key={item.label} // Unique key for each nav item
             className={`flex items-center gap-3 py-2 px-3 rounded-lg transition-all text-left font-medium group 
-              ${item.active ? "bg-blue-100 text-blue-700 shadow-sm" : "text-gray-600 hover:bg-blue-50 hover:text-blue-700"} 
+              ${
+                item.active
+                  ? "bg-blue-100 text-blue-700 shadow-sm"
+                  : "text-gray-600 hover:bg-blue-50 hover:text-blue-700"
+              } 
               ${sidebarOpen ? "" : "justify-center px-2"}`}
             // Style changes if item is active or sidebar is collapsed
             onClick={item.onClick} // Call the item's onClick handler when clicked
