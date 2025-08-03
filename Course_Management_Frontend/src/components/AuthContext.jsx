@@ -46,12 +46,10 @@ export function AuthProvider({ children }) {
   };
 
   const category = async (title, description) => {
-    // Send POST request to create a new category
     await axios.post("http://localhost:8000/api/category/", {
       title,
       description,
     });
-    // After creating a new category, navigate to the profile page
     setPage("category");
   };
 

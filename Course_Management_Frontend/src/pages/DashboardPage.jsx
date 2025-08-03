@@ -6,7 +6,9 @@ import RegisterPage from "./RegisterPage";
 import Sidebar from "../components/Sidebar";
 import Topbar from "../components/Topbar";
 import CategoryPage from "./CategoryPage";
+import CategoryListPage from "./CategoryListPage";
 import CoursePage from "./CoursePage";
+import CourseListPage from "./CourseListPage";
 import axios from "axios";
 
 function DashboardPage() {
@@ -146,6 +148,30 @@ function DashboardPage() {
           },
 
           {
+            label: "Category List",
+            icon: (
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
+                />
+              </svg>
+            ),
+            onClick: () => {
+              setCurrentPage("categoryList");
+              setShowProfile(false);
+            },
+            active: currentPage === "categoryList",
+          },
+
+          {
             label: "Add Course",
             icon: (
               <svg
@@ -168,6 +194,30 @@ function DashboardPage() {
             },
             active: currentPage === "course",
           },
+
+          {
+            label: "Course List",
+            icon: (
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
+                />
+              </svg>
+            ),
+            onClick: () => {
+              setCurrentPage("courseList");
+              setShowProfile(false);
+            },
+            active: currentPage === "courseList",
+          },
         ]
       : []),
   ];
@@ -182,8 +232,12 @@ function DashboardPage() {
         return <RegisterPage />;
       case "category":
         return <CategoryPage />;
+      case "categoryList":
+        return <CategoryListPage />;
       case "course":
         return <CoursePage />;
+      case "courseList":
+        return <CourseListPage />;
       case "dashboard":
       default:
         return (
