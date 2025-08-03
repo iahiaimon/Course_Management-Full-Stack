@@ -53,13 +53,32 @@ export function AuthProvider({ children }) {
     setPage("category");
   };
 
+  const course = async (
+    title,
+    description,
+    banner,
+    price,
+    duration,
+    category,
+  ) => {
+    await axios.post("http://localhost:8000/api/course/", {
+      title,
+      description,
+      banner,
+      price,
+      duration,
+      category,
+    });
+    setPage("course");
+  };
+
   // Helper function to navigate to a specific page
   const goTo = (pageName) => setPage(pageName);
 
   // Provide the authentication context to child components
   return (
     <AuthContext.Provider
-      value={{ token, login, logout, register, page, goTo ,category }}
+      value={{ token, login, logout, register, page, goTo, category, course }}
     >
       {children}
     </AuthContext.Provider>

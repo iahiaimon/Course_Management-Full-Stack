@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useAuth } from "../hooks/useAuth";
-import Avatar from "../components/Avatar";
 
-function CategoryListPage() {
+function CourseListPage() {
   const { token } = useAuth();
-  const [allCategories, setAllCategories] = useState([]);
+  const [allCourse, setAllCourse] = useState([]);
   const [isCurrentUserAdmin, setIsCurrentUserAdmin] = useState(false);
 
   useEffect(() => {
-    const checkAdminAndFetchCategories = async () => {
+    const checkAdminAndFetchCourse = async () => {
       try {
         const profileResponse = await axios.get(
           "http://localhost:8000/api/account/",
@@ -24,18 +23,18 @@ function CategoryListPage() {
         if (currentUserData.role === "admin") {
           setIsCurrentUserAdmin(true);
 
-          const categoriesResponse = await axios.get(
-            "http://localhost:8000/api/category/",
+          const courseResponse = await axios.get(
+            "http://localhost:8000/api/course/",
             {
               headers: { Authorization: `Bearer ${token}` },
             }
           );
 
-          const categoriesList = categoriesResponse.data;
-          console.log("All categories:", categoriesList);
+          const courseList = courseResponse.data;
+          console.log("All categories:", courseList);
 
-          if (Array.isArray(categoriesList)) {
-            setAllCategories(categoriesList);
+          if (Array.isArray(courseList)) {
+            setAllCourse(courseList);
           }
         } else {
           setIsCurrentUserAdmin(false);
@@ -46,7 +45,7 @@ function CategoryListPage() {
       }
     };
 
-    checkAdminAndFetchCategories();
+    checkAdminAndFetchCourse();
   }, [token]);
 
   // If the user is not an admin, show an access denied message
@@ -57,8 +56,8 @@ function CategoryListPage() {
           Sorry, You Can't View This Page
         </h2>
         <p className="text-gray-600">
-          Only admin users can see the list of all category. If you think this
-          is a mistake, please contact your administrator.
+          Only admin users can see the list of all Course. If you think this is
+          a mistake, please contact your administrator.
         </p>
       </div>
     );
@@ -68,35 +67,45 @@ function CategoryListPage() {
   return (
     <div className="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-6xl text-center">
       <h2 className="text-2xl font-bold mb-6 text-green-600">
-        All Category List
+        All Course List
       </h2>
       <div className="overflow-x-auto rounded-lg text-black">
         <table className="min-w-full border border-gray-200 rounded-lg overflow-hidden">
           <thead className="bg-blue-50">
             <tr>
               <th className="border px-4 py-2 text-center">ID</th>
-              <th className="border px-4 py-2 text-left">title</th>
+              <th className="border px-4 py-2 text-left">Title</th>
+              <th className="border px-4 py-2 text-left">Price</th>
+              <th className="border px-4 py-2 text-left">Duration</th>
               <th className="border px-4 py-2 text-left">Status</th>
-              <th className="border px-4 py-2 text-left">Number of Course</th>
+              <th className="border px-4 py-2 text-left">Category</th>
             </tr>
           </thead>
           <tbody>
-            {allCategories.map((category) => (
-              <tr key={category.id}>
+            {allCourse.map((course) => (
+              <tr key={course.id}>
+                <td className="border px-4 py-2 font-semibold">{course.id}</td>
                 <td className="border px-4 py-2 font-semibold">
-                  {category.id}
+                  {course.title}
                 </td>
                 <td className="border px-4 py-2 font-semibold">
-                  {category.title}
+                  {course.price}
+                </td>
+                <td className="border px-4 py-2 font-semibold">
+                  {course.duration} month
                 </td>
                 <td className="border px-4 py-2">
-                  {category.is_active ? "Active" : "Inactive"}
+                  {course.is_active ? "Active" : "Inactive"}
                 </td>
-                <td className="border px-4 py-2 capitalize">
-                  {Array.isArray(category.course)
-                    ? category.course.length
+
+                <td className="border px-4 py-2 font-semibold">
+                  {course.category}
+                </td>
+                {/* <td className="border px-4 py-2 capitalize">
+                  {Array.isArray(course.course)
+                    ? course.category.length
                     : 0}
-                </td>
+                </td> */}
               </tr>
             ))}
           </tbody>
@@ -106,4 +115,4 @@ function CategoryListPage() {
   );
 }
 
-export default CategoryListPage;
+export default CourseListPage;

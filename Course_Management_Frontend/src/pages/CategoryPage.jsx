@@ -5,6 +5,7 @@ function CategoryPage() {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
+    
   });
 
   const [message, setMessage] = useState("");

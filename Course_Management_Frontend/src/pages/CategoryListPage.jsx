@@ -75,7 +75,7 @@ function CategoryListPage() {
           <thead className="bg-blue-50">
             <tr>
               <th className="border px-4 py-2 text-center">ID</th>
-              <th className="border px-4 py-2 text-left">title</th>
+              <th className="border px-4 py-2 text-left">Title</th>
               <th className="border px-4 py-2 text-left">Status</th>
               <th className="border px-4 py-2 text-left">Number of Course</th>
             </tr>

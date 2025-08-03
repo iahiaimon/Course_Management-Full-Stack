@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
+from django.contrib.auth import authenticate, login, logout
 from .models.category import Category
 from .models.course import Course
 from .models.lesson import Lesson, LessonMaterial
@@ -11,12 +12,10 @@ from .serializers import (
     LessonMaterialSerializer,
 )
 
-
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated, AllowAny, IsAdminUser
-from django.contrib.auth import authenticate, login, logout
 from rest_framework.authtoken.models import Token
 
 
