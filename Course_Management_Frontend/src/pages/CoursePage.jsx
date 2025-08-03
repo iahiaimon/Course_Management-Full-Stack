@@ -119,20 +119,7 @@ function CoursePage() {
 
           <div className="relative">
             <span className="absolute left-3 top-2.5 text-gray-400">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M16 12a4 4 0 01-8 0 4 4 0 018 0z"
-                />
-              </svg>
+              <i class="fa-solid fa-money-bill-1"></i>
             </span>
             <input
               className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-300 transition"
@@ -148,20 +135,7 @@ function CoursePage() {
 
           <div className="relative">
             <span className="absolute left-3 top-2.5 text-gray-400">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M16 12a4 4 0 01-8 0 4 4 0 018 0z"
-                />
-              </svg>
+              <i class="fa-solid fa-images"></i>
             </span>
             <input
               className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-300 transition"
@@ -176,20 +150,7 @@ function CoursePage() {
 
           <div className="relative">
             <span className="absolute left-3 top-2.5 text-gray-400">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M16 12a4 4 0 01-8 0 4 4 0 018 0z"
-                />
-              </svg>
+              <i class="fa-solid fa-atom"></i>
             </span>
             <input
               className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-300 transition"
@@ -204,20 +165,7 @@ function CoursePage() {
 
           <div className="relative">
             <span className="absolute left-3 top-2.5 text-gray-400">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M16 12a4 4 0 01-8 0 4 4 0 018 0z"
-                />
-              </svg>
+              <i class="fa-solid fa-layer-group"></i>
             </span>
             <input
               className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-300 transition"

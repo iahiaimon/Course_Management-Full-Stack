@@ -52,21 +52,7 @@ function DashboardPage() {
   const navItems = [
     {
       label: "Dashboard",
-      icon: (
-        <svg
-          className="w-5 h-5"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M3 12l2-2m0 0l7-7 7 7M13 5v6h6"
-          />
-        </svg>
-      ),
+      icon: <i class="fa-solid fa-cloud"></i>,
       onClick: () => {
         setCurrentPage("dashboard");
         setShowProfile(false);
@@ -78,21 +64,7 @@ function DashboardPage() {
       ? [
           {
             label: "Users",
-            icon: (
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"
-                />
-              </svg>
-            ),
+            icon: <i class="fa-solid fa-user"></i>,
             onClick: () => {
               setCurrentPage("users");
               setShowProfile(false);
@@ -101,21 +73,7 @@ function DashboardPage() {
           },
           {
             label: "Register User",
-            icon: (
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
-                />
-              </svg>
-            ),
+            icon: <i class="fa-solid fa-circle-user"></i>,
             onClick: () => {
               setCurrentPage("register");
               setShowProfile(false);
@@ -125,21 +83,7 @@ function DashboardPage() {
 
           {
             label: "Add Category",
-            icon: (
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
-                />
-              </svg>
-            ),
+            icon: <i class="fa-solid fa-layer-group"></i>,
             onClick: () => {
               setCurrentPage("category");
               setShowProfile(false);
@@ -149,21 +93,7 @@ function DashboardPage() {
 
           {
             label: "Category List",
-            icon: (
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
-                />
-              </svg>
-            ),
+            icon: <i class="fa-solid fa-table-cells-large"></i>,
             onClick: () => {
               setCurrentPage("categoryList");
               setShowProfile(false);
@@ -173,8 +103,8 @@ function DashboardPage() {
 
           {
             label: "Add Course",
-            // icon: (
-            // ),
+            icon: <i class="fa-brands fa-discourse"></i>,
+
             onClick: () => {
               setCurrentPage("course");
               setShowProfile(false);
@@ -184,8 +114,7 @@ function DashboardPage() {
 
           {
             label: "Course List",
-            // icon: (
-            // ),
+            icon: <i class="fa-solid fa-table-list"></i>,
             onClick: () => {
               setCurrentPage("courseList");
               setShowProfile(false);
